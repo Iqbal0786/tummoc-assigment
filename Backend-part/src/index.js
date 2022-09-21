@@ -1,6 +1,7 @@
 const express= require("express");
 const connect =require("./configs/db");
 const userController= require("./controllers/user.controller");
+const passport= require("./configs/google.auth")
 const {register,login} = require("./controllers/auth.controller")
 const cors=require("cors");
 const app = express();
@@ -11,7 +12,29 @@ app.use("/users" , userController)
 app.post("/register", register);
 app.post("/login" , login)
 
+// google auth routes
+app.get('/auth/google',
+  passport.authenticate('google', { scope:
+      [ 'email', 'profile' ] }
+));
 
+app.get( '/auth/google/callback',
+    passport.authenticate( 'google', {
+        successRedirect: '/',
+        failureRedirect: '/auth/google/failure'
+}));
+
+app.get("/auth/google/success", (req,res)=>{
+ 
+    return res.send({message:"logged in"})
+
+})
+passport.serializeUser(function(user,done){
+  return done(null, user)
+})
+passport.deserializeUser(function(user,done){
+    return done(null, user)
+  })
 
 
 app.get("",async(req,res)=>{
