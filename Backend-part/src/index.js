@@ -7,12 +7,12 @@ const cors=require("cors");
 const session= require("express-session")
 const app = express();
 app.use(express.json());
+app.use(session({ secret: 'melody hensley is my spirit animal' ,resave:false,saveUninitialized:false}));
 app.use(cors());
 
 app.use("/users" , userController)
 app.post("/register", register);
 app.post("/login" , login);
-app.use(session({ secret: 'melody hensley is my spirit animal' }));
 
 // google auth routes
 app.get('/auth/google',

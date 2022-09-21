@@ -3,6 +3,7 @@ const User= require("../models/user.model");
 const router = express.Router();
 
 router.get("",async(req,res)=>{
+    console.log(req.session);
     try {
         let users= await User.find().lean().exec();
         return res.status(200).send(users);
