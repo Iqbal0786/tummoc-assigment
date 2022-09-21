@@ -2,7 +2,8 @@ const express= require("express");
 const connect =require("./configs/db");
 const userController= require("./controllers/user.controller");
 const passport= require("./configs/google.auth")
-const {register,login} = require("./controllers/auth.controller")
+const {register,login} = require("./controllers/auth.controller");
+const cityController= require("./controllers/city.controller")
 const cors=require("cors");
 const session= require("express-session")
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 app.use("/users" , userController)
 app.post("/register", register);
 app.post("/login" , login);
+app.use("/cities",cityController)
 
 // google auth routes
 app.get('/auth/google',
