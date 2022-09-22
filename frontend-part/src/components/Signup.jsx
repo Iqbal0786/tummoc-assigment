@@ -5,6 +5,7 @@ import axios from "axios";
 export default function Signup() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
+    name:"",
     email: "",
     password: "",
     confirmPassword: "",
@@ -77,6 +78,18 @@ export default function Signup() {
             </h5>
           </div>
           <div id="inputBox">
+          <div style={{ width: "100%", position: "relative" }}>
+              <i
+                class="fa fa-user"
+                style={{ position: "absolute", top: "40%", left: "10%" }}
+              ></i>{" "}
+              <input
+                type={"text"}
+                placeholder="Enter user name ..."
+                name="name"
+                onChange={formHandler}
+              />
+            </div>
             <div style={{ width: "100%", position: "relative" }}>
               <i
                 class="fa fa-envelope icon"
