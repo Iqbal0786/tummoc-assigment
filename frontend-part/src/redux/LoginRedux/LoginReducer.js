@@ -11,7 +11,7 @@ export const loginReducer=(store=initialState,{type,payload})=>{
         switch(type){
             case LOADING: return {...store,loading:true}
             case ERROR : return {...store,loading:false,error:true}
-            case SUCCESS: return {...store,loading:false,error:false , user:payload , isLogged:true}
+            case SUCCESS: return {...store,isLogged:true,loading:false,error:false , user:payload , }
            default: return  store
         }
 }
