@@ -1,9 +1,11 @@
 import {Link, useNavigate} from "react-router-dom"
 import React, { useState } from "react";
-import axios from "axios"
+import { useDispatch } from "react-redux";
 import "../styles/style.css";
+import { Login_Request } from "../redux/LoginRedux/ActionConstant";
 export default function Login() {
   const navigate= useNavigate();
+  const dispatch=useDispatch()
     const [userInfo,setUserInfo]=useState({
         email:"",
         password:"",
@@ -25,14 +27,9 @@ export default function Login() {
             alert("please enter password")
          }
          else {
-          axios.post("https://brand-and-beyond-backend.herokuapp.com/login",{ email:userInfo.email, password:userInfo.password}).then((res)=>{
-            sessionStorage.setItem("loggedUser" , JSON.stringify(res.data))
-            alert("Successfully Logged in !!");
-             setTimeout(()=>{navigate("/admin")},3000)
-            console.log(res.data)
-           }).catch((err)=>{
-             alert("Please check your email or password  !!")
-           })
+            const {email,password} = userInfo;
+            dispatch(Login_Request({email,password}))
+          
          }
     }
     console.log(userInfo)
