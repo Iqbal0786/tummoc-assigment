@@ -24,13 +24,14 @@ app.get('/auth/google',
 
 app.get( '/auth/google/callback',
     passport.authenticate( 'google', {
-        successRedirect: '/',
+        successRedirect: '/auth/google/success',
         failureRedirect: '/auth/google/failure'
 }));
 
 app.get("/auth/google/success", (req,res)=>{
- 
-    return res.send({message:"logged in"})
+  
+  
+    return res.send({message:"logged in" })
 
 })
 passport.serializeUser(function(user,done){
