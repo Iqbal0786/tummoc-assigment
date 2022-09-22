@@ -6,14 +6,16 @@ export const SUCCESS="SUCCESS";
 
 export const loading=()=>({type:LOADING});
 export const error=()=>({type:ERROR});
-export const success=(payload)=>({type:SUCCESS,payload})
+export const success=()=>({type:SUCCESS})
 
 export const Register_Request=(data)=>(dispatch)=>{
       dispatch(loading());
       axios.post("http://localhost:9999/register" , data).then((res)=>{
         console.log(res)
+        dispatch(success())
       }).catch((err)=>{
         console.log(err.message)
+        dispatch(error())
       })
   
 
