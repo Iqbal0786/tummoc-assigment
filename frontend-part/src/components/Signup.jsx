@@ -2,7 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "../styles/style.css";
 import axios from "axios";
+import {useDispatch} from "react-redux"
+import { Register_Request } from "../redux/RegisteRedux/ActionConstant";
 export default function Signup() {
+  const dispatch=useDispatch()
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     name:"",
@@ -30,18 +33,8 @@ export default function Signup() {
     } else if (userInfo.password != userInfo.confirmPassword) {
       alert("password does not matched !!");
     } else {
-      axios
-        .post("https://brand-and-beyond-backend.herokuapp.com/register", {
-          email: userInfo.email,
-          password: userInfo.password,
-        })
-        .then((res) => {
-          alert("Registered Successfully !!");
-          navigate("/login");
-        })
-        .catch((err) => {
-          alert("Something went wrong !!");
-        });
+      const {name,email,password}=userInfo
+      dispatch(Register_Request({name,email,password}))
     }
   };
   console.log(userInfo);
