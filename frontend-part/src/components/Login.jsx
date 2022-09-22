@@ -16,7 +16,7 @@ export default function Login() {
          let {value,name}= e.target;
          setUserInfo({...userInfo,[name]:value})
     }
-    
+
     const loginHandler=()=>{
          if(userInfo.email==""){
             alert("please enter email address")
@@ -93,7 +93,7 @@ export default function Login() {
              </div>
             <div>
                 <button onClick={loginHandler}> Sign in </button>
-                  <div style={{display:"flex" , justifyContent:"space-around" , marginTop:"5px" , gap:"5px"}}><b><p>dose not  have  a account ?</p></b> <Link to={"/"} style={{textDecoration:"none", color:"#98E1F2" , marginTop:"1px" , fontWeight:"400"}}> Sign up</Link></div>
+                  <div style={{display:"flex" , justifyContent:"space-around" , marginTop:"5px" , gap:"5px"}}><b><p>dose not  have  a account ?</p></b> <Link to={"/register"} style={{textDecoration:"none", color:"#98E1F2" , marginTop:"1px" , fontWeight:"400"}}> Sign up</Link></div>
             </div>
           </div>
         </div>
