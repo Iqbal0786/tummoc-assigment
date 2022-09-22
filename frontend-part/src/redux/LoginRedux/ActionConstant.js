@@ -13,7 +13,7 @@ export const Login_Request=(data ,naviagte)=>(dispatch)=>{
       axios.post("http://localhost:9999/login" , data).then((res)=>{
         alert("Logged In Successfully !!")
         dispatch(success(res.data))
-        naviagte('/')
+        naviagte('/home')
       }).catch((err)=>{
         console.log(err.message)
         dispatch(error())
