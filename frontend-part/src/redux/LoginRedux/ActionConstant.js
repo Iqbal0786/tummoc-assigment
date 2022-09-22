@@ -8,11 +8,12 @@ export const loading=()=>({type:LOADING});
 export const error=()=>({type:ERROR});
 export const success=(payload)=>({type:SUCCESS ,payload})
 
-export const Login_Request=(data)=>(dispatch)=>{
+export const Login_Request=(data ,naviagte)=>(dispatch)=>{
       dispatch(loading());
       axios.post("http://localhost:9999/login" , data).then((res)=>{
         alert("Logged In Successfully !!")
         dispatch(success())
+        naviagte('/')
       }).catch((err)=>{
         console.log(err.message)
         dispatch(error())
