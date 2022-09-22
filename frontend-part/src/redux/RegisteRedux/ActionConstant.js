@@ -10,7 +10,7 @@ export const success=()=>({type:SUCCESS})
 
 export const Register_Request=(data)=>(dispatch)=>{
       dispatch(loading());
-      axios.post("http://localhost:9999/register" , data).then((res)=>{
+      axios.post("https://tummoc-db.herokuapp.com/register" , data).then((res)=>{
         alert("Registered Successfully !!")
         dispatch(success())
       }).catch((err)=>{

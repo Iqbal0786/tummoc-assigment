@@ -10,7 +10,7 @@ export const success=(payload)=>({type:SUCCESS ,payload})
 
 export const Login_Request=(data ,naviagte)=>(dispatch)=>{
       dispatch(loading());
-      axios.post("http://localhost:9999/login" , data).then((res)=>{
+      axios.post("https://tummoc-db.herokuapp.com/login" , data).then((res)=>{
         alert("Logged In Successfully !!")
         dispatch(success(res.data))
         naviagte('/home')
