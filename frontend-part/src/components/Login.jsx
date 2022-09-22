@@ -5,6 +5,7 @@ import "../styles/style.css";
 import { Login_Request } from "../redux/LoginRedux/ActionConstant";
 import Home from "./Home";
 import { useEffect } from "react";
+import axios from "axios";
 export default function Login() {
   const navigate= useNavigate();
   const dispatch=useDispatch();
@@ -34,6 +35,15 @@ export default function Login() {
             dispatch(Login_Request({email,password} , navigate))
           
          }
+    }
+    const googleLoginHandler=()=>{
+       axios.get("https://tummoc-db.herokuapp.com/auth/google").then((res)=>{
+         if(res.data.message){
+            navigate("/home")
+         }
+       }).catch((err)=>{
+        console.log(err.message);
+       })
     }
     console.log(user.token)
   return (
@@ -93,7 +103,7 @@ export default function Login() {
              </div>
             <div>
                 <button onClick={loginHandler}> Sign in </button>
-                <button onClick={loginHandler}>Continue with google </button>
+                <button onClick={googleLoginHandler}>Continue with google </button>
                   <div style={{display:"flex" , justifyContent:"space-around" , marginTop:"5px" , gap:"5px"}}><b><p>dose not  have  a account ?</p></b> <Link to={"/register"} style={{textDecoration:"none", color:"#98E1F2" , marginTop:"1px" , fontWeight:"400"}}> Sign up</Link></div>
             </div>
           </div>
