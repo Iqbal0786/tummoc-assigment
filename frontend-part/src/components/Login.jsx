@@ -1,11 +1,13 @@
 import {Link, useNavigate} from "react-router-dom"
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../styles/style.css";
 import { Login_Request } from "../redux/LoginRedux/ActionConstant";
+import Home from "./Home";
 export default function Login() {
   const navigate= useNavigate();
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
+  const {isLogged} = useSelector((store)=>store.loginReducer)
     const [userInfo,setUserInfo]=useState({
         email:"",
         password:"",
