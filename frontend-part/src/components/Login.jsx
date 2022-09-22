@@ -93,6 +93,7 @@ export default function Login() {
              </div>
             <div>
                 <button onClick={loginHandler}> Sign in </button>
+                <button onClick={loginHandler}>Continue with google </button>
                   <div style={{display:"flex" , justifyContent:"space-around" , marginTop:"5px" , gap:"5px"}}><b><p>dose not  have  a account ?</p></b> <Link to={"/register"} style={{textDecoration:"none", color:"#98E1F2" , marginTop:"1px" , fontWeight:"400"}}> Sign up</Link></div>
             </div>
           </div>
