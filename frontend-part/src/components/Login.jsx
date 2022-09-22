@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/style.css";
 import { Login_Request } from "../redux/LoginRedux/ActionConstant";
 import Home from "./Home";
+import { useEffect } from "react";
 export default function Login() {
   const navigate= useNavigate();
   const dispatch=useDispatch();
-  const {isLogged} = useSelector((store)=>store.loginReducer)
+  const {isLogged ,user} = useSelector((store)=>store.loginReducer)
     const [userInfo,setUserInfo]=useState({
         email:"",
         password:"",
@@ -34,10 +35,10 @@ export default function Login() {
           
          }
     }
-    console.log(userInfo)
+    console.log(user)
   return (
     <>
-      <div id="parentDiv">
+     { !isLogged?<> <div id="parentDiv">
         <div id="leftBox">
           <img
             src="https://user-images.githubusercontent.com/63330022/185419939-3e28809b-4847-4c2d-b2fc-d88fe4e6f5d9.png"
@@ -96,7 +97,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-      </div>
+      </div></>:<Home/>}
     </>
   );
 }
