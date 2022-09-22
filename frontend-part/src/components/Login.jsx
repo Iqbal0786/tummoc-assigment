@@ -28,7 +28,7 @@ export default function Login() {
          }
          else {
             const {email,password} = userInfo;
-            dispatch(Login_Request({email,password}))
+            dispatch(Login_Request({email,password} , navigate))
           
          }
     }
