@@ -10,7 +10,7 @@ export const success=(payload)=>({type:SUCCESS ,payload})
 
 export const Register_Request=(data)=>(dispatch)=>{
       dispatch(loading());
-      axios.post("http://localhost:9999/register" , data).then((res)=>{
+      axios.post("http://localhost:9999/login" , data).then((res)=>{
         console.log(res.data)
         dispatch(success())
       }).catch((err)=>{
