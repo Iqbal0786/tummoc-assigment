@@ -35,7 +35,7 @@ export default function Login() {
           
          }
     }
-    console.log(user)
+    console.log(user.token)
   return (
     <>
      { !isLogged?<> <div id="parentDiv">
