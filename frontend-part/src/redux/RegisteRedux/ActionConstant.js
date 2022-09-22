@@ -11,7 +11,7 @@ export const success=()=>({type:SUCCESS})
 export const Register_Request=(data)=>(dispatch)=>{
       dispatch(loading());
       axios.post("http://localhost:9999/register" , data).then((res)=>{
-        console.log(res)
+        console.log(res.data)
         dispatch(success())
       }).catch((err)=>{
         console.log(err.message)

@@ -10,5 +10,6 @@ export const registerReducer=(store=initialState,{type,payload})=>{
             case LOADING: return {...store,loading:true}
             case ERROR : return {loading:false,error:true}
             case SUCCESS: return {loading:false,error:false}
+           default: return  store
         }
 }
