@@ -11,7 +11,7 @@ export const success=(payload)=>({type:SUCCESS ,payload})
 export const Login_Request=(data)=>(dispatch)=>{
       dispatch(loading());
       axios.post("http://localhost:9999/login" , data).then((res)=>{
-        console.log(res.data)
+        alert("Logged In Successfully !!")
         dispatch(success())
       }).catch((err)=>{
         console.log(err.message)
